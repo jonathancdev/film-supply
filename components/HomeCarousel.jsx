@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 import CarouselBlock from "./CarouselBlock";
 export default function HomeCarousel() {
   const items = [1, 2, 3];
-  const [active, setActive] = useState(1);
+  const [active, setActive] = useState(2);
   const change = () => {
     if (active === 3) {
       setActive(1);
@@ -25,31 +26,63 @@ export default function HomeCarousel() {
         <h1 className="block-content__heading--primary">COLOR FILM</h1>
         <div className="block-content">
           <div className="block-content__box">
-            <img
-              src="https://res.cloudinary.com/dklynundl/image/upload/v1640436513/homeblocks/color2.jpg"
-              alt="color film"
-            />
+            <Link href="/shop/category/color/color-negative">
+              <a>
+                <img
+                  src="https://res.cloudinary.com/dklynundl/image/upload/v1640446995/homeblocks/colornegative.png"
+                  alt="color negative"
+                />
+              </a>
+            </Link>
           </div>
+
           <div className="block-content__box">
-            <img
-              src="https://res.cloudinary.com/dklynundl/image/upload/v1640436513/homeblocks/color1.jpg"
-              alt="color film"
-            />
+            <Link href="/shop/category/color/slide">
+              <a>
+                <img
+                  src="https://res.cloudinary.com/dklynundl/image/upload/v1640446891/homeblocks/colorslide.png"
+                  alt="color slide"
+                />
+              </a>
+            </Link>
           </div>
         </div>
       </CarouselBlock>
       <CarouselBlock active={active === 2} number={"two"}>
-        <h1 className="block-content__heading--primary">BLACK AND WHITE</h1>
-        <div className="block-content">
-          <div className="block-content__box"></div>
-          <div className="block-content__box"></div>
-        </div>
+        <Link href="/shop/category/color/black-and-white">
+          <a>
+            <h1 className="block-content__heading--primary">BLACK AND WHITE</h1>
+            <div className="block-content">
+              <div className="block-content__box">
+                <img
+                  src="https://res.cloudinary.com/dklynundl/image/upload/v1640450353/homeblocks/bnw1.png"
+                  alt="bnw1"
+                />
+              </div>
+              <div className="block-content__box">
+                <img
+                  src="https://res.cloudinary.com/dklynundl/image/upload/v1640450372/homeblocks/bnw2.png"
+                  alt="bnw2"
+                />
+              </div>
+            </div>
+          </a>
+        </Link>
       </CarouselBlock>
       <CarouselBlock active={active === 3} number={"three"}>
-        <h1 className="block-content__heading--primary">SPECIAL FX</h1>
-        <div className="block-content">
-          <div className="block-content__box"></div>
-        </div>
+        <Link href="/shop/category/brands/dubblefilm">
+          <a>
+            <h1 className="block-content__heading--primary">SPECIAL FX</h1>
+            <div className="block-content">
+              <div className="block-content__box">
+                <img
+                  src="https://res.cloudinary.com/dklynundl/image/upload/v1640450819/homeblocks/special.png"
+                  alt="special film"
+                />
+              </div>
+            </div>
+          </a>
+        </Link>
       </CarouselBlock>
     </div>
   );

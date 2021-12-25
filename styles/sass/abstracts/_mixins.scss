@@ -127,3 +127,22 @@
     color: v.$color-blue-darker;
   }
 }
+
+//media queries
+@mixin respond($breakpoint) {
+  @if $breakpoint == mobile {
+    @media (max-width: 450px) {
+      @content;
+    }
+  }
+  @if $breakpoint == tablet {
+    @media (max-width: 900px) {
+      @content;
+    }
+  }
+  @if $breakpoint == laptop {
+    @media (max-width: 1200px) {
+      @content;
+    }
+  }
+}
