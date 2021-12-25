@@ -1,0 +1,12 @@
+@use "../abstracts/" as a;
+
+body {
+  font-family: "Chivo";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a:link,
+a:visited {
+  text-decoration: none;
+}

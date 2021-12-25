@@ -1,0 +1,12 @@
+@use '../abstracts/' as a;
+
+.fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__text {
+    font-size: 2rem;
+    color: a.$color-blue-lighter;
+  }
+}

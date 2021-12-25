@@ -1,0 +1,40 @@
+@use "../abstracts/" as a;
+
+.cart {
+  position: relative;
+  height: 100%;
+
+  &-list {
+    height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+}
+
+.cart-checkout {
+  position: absolute;
+  bottom: 0;
+  @include a.content-area-yellow;
+
+  &--total {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &--subtotal {
+    font-size: 3rem;
+    font-weight: 600;
+    text-transform: lowercase;
+    color: a.$color-blue-darker;
+  }
+  &--price {
+    font-size: 3rem;
+    font-weight: 500;
+    color: a.$color-blue-darker;
+  }
+
+  &__btn {
+    @include a.square-button;
+  }
+}

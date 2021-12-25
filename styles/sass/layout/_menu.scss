@@ -1,0 +1,100 @@
+@use "../abstracts/" as a;
+
+//Menu.jsx
+.menu {
+  position: fixed;
+  top: 0;
+  height: 100%;
+  width: 100vw;
+  margin-top: a.$header-height;
+  padding-top: a.$page-margin-top;
+  transform: translateX(-105%);
+  transition: all 0.3s cubic-bezier(0.6, 0.04, 0.5, 1);
+  z-index: 2;
+
+  &.open {
+    background-color: a.$color-yellow-primary;
+    transform: translateX(0);
+  }
+
+  &__link {
+    //browse all film link, should be same as menu__item
+    display: block; //gives a element height/top/bottom padding
+  }
+}
+
+//MenuItem.jsx
+.menu__item {
+  min-height: 5rem; //min-height so submenu will expand
+}
+
+.btn--menu {
+  position: relative;
+  background-color: inherit;
+  width: 100%;
+  padding: 1rem 4.5rem;
+  font-size: 3.5rem;
+  color: a.$color-blue-darker;
+  font-family: "Chivo";
+  font-weight: a.$menu-item-weight;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &:hover {
+    font-size: 3.75rem;
+  }
+}
+
+.menu--arrow {
+  color: a.$color-blue-darker;
+  font-size: 3rem;
+}
+
+//Submenu.jsx
+.submenu {
+  width: 100vw;
+  padding: 0 4.5rem;
+  display: flex;
+  flex-direction: column;
+  max-height: 0rem;
+  background-color: a.$color-yellow-primary;
+  transform: translateX(-100rem);
+  transition: max-height 0.3s ease, background-color 0.5s ease,
+    transform 0.01s ease;
+
+  &.open {
+    background-color: a.$color-yellow-lighter;
+    max-height: 30rem;
+    transform: translateX(0);
+  }
+}
+
+.submenu__link {
+  display: inline;
+  color: a.$color-blue-darker;
+  padding: 0.5rem;
+  font-size: a.$submenu-link-font-size;
+  font-weight: a.$submenu-link-weight;
+  opacity: 0%;
+  transition: transform 0.01s ease, opacity 0.3s ease-out;
+
+  &.open {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  p:hover {
+    display: inline;
+    background-color: a.$color-blue-lightest;
+    color: a.$color-yellow-lightest;
+  }
+}
+
+.submenu--iso {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.submenu--brands {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}

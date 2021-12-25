@@ -1,0 +1,73 @@
+@use "../abstracts/" as a;
+
+.options {
+  background-color: a.$color-yellow-lighter;
+  padding: 0.5rem 0;
+  height: 10rem;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.filter {
+  //div that contains the entire filter block
+
+  &__list {
+    @include a.horizontal-list;
+  }
+
+  &__item {
+    //li with label and data div
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__label {
+    //text above select boxes
+    font-size: 1.7rem;
+    font-weight: 600;
+    margin-left: -1rem; //center labels above, offsets width off arrow
+  }
+
+  &-data {
+    //div that contains select box
+    @include a.custom-select-box;
+
+    &::after {
+      //arrow in filter boxes
+      @include a.clip-path-arrow-down;
+    }
+  }
+  &__select {
+    @include a.custom-select;
+  }
+}
+
+.sort {
+  display: flex;
+  justify-content: center;
+
+  &__label {
+    font-size: 1.7rem;
+    font-weight: 600;
+    margin-right: 0.5rem;
+  }
+
+  &__list {
+    @include a.horizontal-list;
+    margin: 1rem 1rem 0rem 1rem;
+    align-items: center;
+  }
+  &-data {
+    //div that contains select box
+    @include a.custom-select-box;
+
+    &::after {
+      //arrow in filter boxes
+      @include a.clip-path-arrow-down;
+    }
+  }
+  &__select {
+    @include a.custom-select;
+  }
+}

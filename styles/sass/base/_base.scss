@@ -1,0 +1,31 @@
+@use "../abstracts/" as a;
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  //defines 1rem
+  font-size: 62.5%;
+  //sets default height to 100vh
+  height: 100%;
+  min-height: 100%;
+}
+
+body {
+  //100% height below fixed header
+  height: a.$body-height;
+  min-height: a.$body-height;
+}
+
+#__next {
+  //100% height
+  height: 100%;
+}
+.btn {
+  border: none;
+  cursor: pointer;
+}

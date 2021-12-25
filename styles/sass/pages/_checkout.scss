@@ -1,0 +1,66 @@
+@use '../abstracts/' as a;
+
+.checkout {
+  margin-top: a.$page-margin-top;
+  width: calc(100vw - 4rem);
+  &__heading {
+    font-size: 2.5rem;
+    font-weight: 500;
+    margin: 0.5rem;
+    text-transform: uppercase;
+    color: a.$color-blue-darkest;
+    text-align: center;
+  }
+}
+.order {
+  &__list {
+    min-height: 30rem;
+    max-height: 60vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  &__heading {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 0.5rem 0;
+    text-align: center;
+
+    &--text {
+      font-size: 1.5rem;
+      font-weight: 600;
+      text-decoration: underline;
+    }
+  }
+  &-item {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    height: 3.5rem;
+    width: 100%;
+    margin: 0.5rem 0;
+  }
+  &-item__heading {
+    margin-left: 1rem;
+    &--primary {
+      font-size: 1.5rem;
+      font-weight: 500;
+    }
+    &--secondary {
+      position: absolute;
+      font-size: 1.125rem;
+      font-weight: 400;
+      grid-row: span 3; //take up other parts
+    }
+  }
+  &-item--text {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+}
+.checkout-submit {
+  @include a.content-area-yellow;
+
+  &__btn {
+    @include a.square-button;
+  }
+}

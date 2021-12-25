@@ -1,0 +1,9 @@
+@use "../abstracts/" as a;
+
+.page {
+  position: relative;
+  margin: 0 auto;
+  margin-top: a.$header-height;
+  padding: 0 2rem;
+  height: 100%;
+}

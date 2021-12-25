@@ -1,0 +1,51 @@
+@use "../abstracts/" as a;
+
+.home {
+  position: relative;
+  height: 100%;
+  margin-top: a.$page-margin-top;
+  &__main {
+    position: relative;
+    //fits main section perfectly between shop all and search items
+    height: calc((100% - #{a.$header-height} * 2) - 4rem);
+  }
+}
+.home__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: a.$header-height;
+  width: 100%;
+  margin: 1rem 0;
+  color: a.$color-blue-darker;
+  background-color: a.$color-yellow-lighter;
+
+  &--shop {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-size: 2.5rem;
+    font-weight: 600;
+  }
+  &--arrow {
+    position: absolute;
+    right: 2.5rem;
+    font-size: 4rem;
+    //align arrow and text
+    margin-top: 0.4rem;
+  }
+
+  &--img {
+    height: 100%;
+    width: 100%;
+  }
+
+  &--title {
+    position: absolute;
+    color: a.$color-blue-darker;
+    font-weight: 800;
+    font-size: 4rem;
+  }
+}

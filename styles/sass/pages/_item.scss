@@ -1,0 +1,66 @@
+@use "../abstracts/" as a;
+
+.item {
+  margin-top: a.$page-margin-top;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__heading-primary {
+    font-size: 3rem;
+    text-transform: uppercase;
+    color: a.$color-blue-darker;
+  }
+  &__heading-secondary {
+    font-size: 2rem;
+    color: a.$color-blue-darker;
+  }
+  &__heading-tertiary {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+  &__img {
+    padding: 1rem;
+    width: 35vw;
+  }
+  &__details {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__text {
+    font-size: 1.8rem;
+    padding: 1rem;
+    color: a.$color-blue-lighter;
+    font-weight: 700;
+  }
+  &__price {
+    font-size: 2.8rem;
+    font-weight: 600;
+    color: a.$color-blue-darkest;
+  }
+  &__description {
+    width: 85%;
+    font-size: 1.8rem;
+    color: a.$color-blue-darker;
+    padding-bottom: 1rem;
+  }
+}
+
+.add-to-cart__btn {
+  @include a.square-button;
+
+  .active {
+    pointer-events: none;
+  }
+
+  &--icon {
+    position: absolute;
+    left: 2.5rem;
+    font-size: 2rem;
+    margin-right: 2rem;
+    opacity: 0;
+  }
+  .active &--icon {
+    opacity: 1;
+  }
+}

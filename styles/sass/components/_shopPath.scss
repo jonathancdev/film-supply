@@ -1,0 +1,10 @@
+@use "../abstracts/" as a;
+
+.shop-path {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 0.5rem auto;
+  background-color: a.$color-white;
+  color: a.$color-blue-darker;
+  width: calc(100% - 3rem);
+}

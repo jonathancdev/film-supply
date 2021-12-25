@@ -1,0 +1,106 @@
+@use "../abstracts/" as a;
+.search-list__container {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: a.$color-white;
+  border: solid;
+  border-width: 2px;
+  border-color: a.$color-yellow-lighter;
+}
+.search-list {
+  height: calc(100% + 1rem);
+  width: 100%;
+  top: 0;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  & > :first-child {
+    margin-top: auto !important;
+  }
+
+  &__title {
+    height: 2.5rem;
+    width: 100%;
+    font-size: 2rem;
+    background-color: a.$color-white;
+    color: a.$color-blue-darkest;
+    opacity: 0.75;
+    font-weight: 600;
+    text-align: center;
+    padding-bottom: 1rem;
+  }
+  &__close {
+    position: absolute;
+    bottom: 0rem;
+    height: 2.5rem;
+    width: 100%;
+    border: none;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    font-size: 2rem;
+    background-color: a.$color-white;
+    opacity: 1;
+    line-height: 1;
+    color: a.$color-blue-darkest;
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+}
+
+.search {
+  &__item {
+    padding: 0.5rem;
+    width: 99%; //to account for scrollbar covering right side
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    background-color: a.$color-white;
+
+    &:hover {
+      background-color: a.$color-yellow-lightest;
+    }
+  }
+
+  &__text {
+    min-width: 20rem;
+    color: a.$color-blue-darker;
+    div {
+      display: flex;
+      flex-direction: row;
+    }
+    &--brand {
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-right: 1rem;
+    }
+    &--title {
+      font-size: 1.5rem;
+      font-weight: 500;
+    }
+    &--format,
+    &--type,
+    &--iso {
+      font-size: 1.25rem;
+      margin-right: 1rem;
+      color: a.$color-blue-primary;
+    }
+    &--format {
+      font-weight: 600;
+      color: a.$color-blue-darker;
+    }
+  }
+  &__img {
+    height: 8rem;
+    margin: 0 2rem;
+  }
+}

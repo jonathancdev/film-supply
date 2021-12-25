@@ -1,0 +1,63 @@
+@use '../abstracts/' as a;
+
+.payment {
+  position: absolute;
+  background-color: a.$color-white;
+  width: calc(100vw - 4rem);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+  &__heading {
+    width: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &--primary {
+      font-size: 1.8rem;
+      text-transform: uppercase;
+    }
+  }
+  &__icons {
+    width: 35%;
+    display: flex;
+    justify-content: space-between;
+  }
+  &__icon {
+    font-size: 1.8rem;
+  }
+}
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+
+  &__label {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  &__input {
+    height: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+  &--row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__btn {
+    @include a.square-button;
+  }
+}
+.exp {
+  width: 12rem;
+  text-align: center;
+}
+.cvv {
+  width: 7.5rem;
+  text-align: center;
+}

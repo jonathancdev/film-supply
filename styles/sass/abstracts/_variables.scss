@@ -1,0 +1,30 @@
+// COLORS
+$color-white: #fff;
+$color-black: #000;
+
+$color-blue-lightest: #35c3ee;
+$color-blue-lighter: #11a2cf;
+$color-blue-primary: #0d7da0;
+$color-blue-darker: #084c61;
+$color-blue-darkest: #031b22;
+
+$color-yellow-lightest: #fff4df;
+$color-yellow-lighter: #ffde9b;
+$color-yellow-primary: #ffc857;
+$color-yellow-darker: #ffb213;
+$color-yellow-darkest: #ce8b00;
+
+$color-blue-grey: #455155;
+$color-white-grey: rgb(219, 219, 219);
+
+//MENU
+$header-height: 9rem;
+//***must change body height rem to match header-height***
+$body-height: calc(100% - 9rem);
+$menu-item-weight: 600;
+
+$submenu-link-font-size: 2.5rem;
+$submenu-link-weight: 500;
+
+//PAGES
+$page-margin-top: 2.5rem;
