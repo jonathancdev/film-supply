@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Options from "../../../../../components/Options";
-import OptionsTest from "../../../../../components/OptionsTest";
 import ItemPreview from "../../../../../components/ItemPreview";
 import filterItems from "../../../../../utils/filterItems";
 import sortItems from "../../../../../utils/sortItems";
@@ -84,7 +83,6 @@ export default function Category({
             {itemList.map((item) => (
               <ItemPreview
                 item={item}
-                // addToCart={addToCart}
                 key={item.title + item.format}
                 addToCart={addToCart}
               />

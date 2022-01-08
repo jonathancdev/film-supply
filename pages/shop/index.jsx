@@ -1,30 +1,59 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import ItemPreview from "../../components/ItemPreview";
-// import Options from "../../Options/Options";
-// import ItemPreview from "../../ItemPreview/ItemPreview";
+import Options from "../../components/Options";
+import filterItems from "../../utils/filterItems";
+import sortItems from "../../utils/sortItems";
 
-const Shop = ({ items, categories, addToCart }) => {
-  //   useEffect(() => {
-  //     //set filter and sort to original values when unmounted
-  //     return () => {
-  //       setSortOption(null);
-  //       setFilterOption(null);
-  //     };
-  //   }, []);
-  const itemList = items.filter((item) => item.title !== " ");
+const Shop = ({ category, subcategory, items, categories, addToCart }) => {
+  //remove empty items
+  const allItems = items.filter((item) => item.title !== " ");
+  const [sortOption, setSortOption] = useState("brandasc");
+  //itemList will either be allItems or a new array filtering allItems
+  const [itemList, setItemList] = useState(sortItems(allItems, sortOption));
+  //resets item list if router props change
+  useEffect(() => {
+    setItemList(allItems);
+  }, [category, subcategory]);
+
+  //FILTER ITEMS BY OPTION
+  //array that holds category and subcategory for filter option
+  const [filterOption, setFilterOption] = useState([]);
+
+  const updateSortOption = (option) => {
+    setSortOption(option);
+  };
+  const updateFilterOption = (option) => {
+    setFilterOption(option);
+  };
+
+  useEffect(() => {
+    let filtered = [];
+    if (filterOption.length === 2) {
+      //if filter option is selected or changes, filter array
+      filtered = filterItems(allItems, filterOption);
+    } else {
+      //or leave array alone
+      filtered = allItems;
+    }
+    //sort array, default is a to z in state
+    setItemList(sortItems(allItems, sortOption));
+  }, [filterOption, sortOption]);
+
   return (
     <div className="page">
       <div className="shop">
-        {/* <Options
-          cats={cats}
-          setSortOption={setSortOption}
-          setFilterOption={setFilterOption}
-        ></Options> */}
+        <Options
+          categories={categories}
+          updateSortOption={updateSortOption}
+          updateFilterOption={updateFilterOption}
+          category={category}
+          subcategory={subcategory}
+        ></Options>
         <div className="shop-path">shop / all film</div>
 
-        {items.length > 0 ? (
+        {itemList.length > 0 ? (
           <div className="shop-grid">
-            {itemList.map((item, i) => (
+            {itemList.map((item) => (
               <ItemPreview
                 key={item.title + item.format}
                 item={item}
@@ -33,7 +62,7 @@ const Shop = ({ items, categories, addToCart }) => {
             ))}
           </div>
         ) : (
-          "loading........."
+          "something went wrong"
         )}
       </div>
     </div>

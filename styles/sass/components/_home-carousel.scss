@@ -1,117 +1,94 @@
 @use "../abstracts/" as a;
 
 .home-carousel {
+  position: relative;
   height: 100%;
-  position: absolute;
   width: 100%;
   overflow: hidden;
   //__block is actual component which gets number class in props
   &__block {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 100%;
     width: 100%;
-    position: absolute;
     opacity: 0;
     transform: translateX(100%);
     transition: all 0.2s linear;
+    padding: 3rem;
+    @include a.respond(mobile) {
+      padding: 1rem;
+    }
     //general block content sizing, individual blocks go under .one/.two/.three etc.
     .block-content {
+      position: relative;
       display: flex;
       height: 100%;
       width: 100%;
-      padding: 3rem 0;
+      max-width: 50rem;
+      max-height: 30rem;
+
       img {
         object-fit: contain;
-        max-width: 100%;
-        max-height: 375px;
-        padding: 1rem;
+        width: 100%;
         transition: all 0.1s ease-in-out;
+        cursor: pointer;
         &:hover {
-          transform: scale(1.05);
+          transform: scale(1.02);
         }
       }
     }
+    //numbered carousel__block components
     &.one {
       .block-content__heading--primary {
-        top: 1rem;
+        top: 0rem;
         left: 2rem;
       }
-      .block-content {
-        justify-content: center;
-        align-items: center;
-        padding: 0 3rem;
-      }
       .block-content__box {
+        aspect-ratio: 2/3;
         display: flex;
-        flex-direction: column;
-        justify-content: center;
-        height: 100%;
-
-        width: 75%;
+        height: auto;
+        width: 50%;
         background-color: inherit;
-        @include a.respond("laptop") {
-          padding: 10rem;
-        }
-        @include a.respond("tablet") {
-          padding: 3rem;
-        }
-        @include a.respond("mobile") {
-          padding: 1rem;
-        }
+        margin: 1rem;
       }
     }
     &.two {
       .block-content__heading--primary {
-        bottom: 1rem;
+        bottom: -2rem;
         right: 2rem;
       }
-      .block-content {
-        justify-content: space-evenly;
-        align-items: center;
-        @include a.respond("tablet") {
-          flex-direction: row;
-        }
-        @include a.respond("mobile") {
-          flex-direction: column;
-        }
-      }
-      .block-content__box {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        height: 50%;
 
+      .block-content__box {
+        aspect-ratio: 1/1;
+        display: flex;
+        height: auto;
         width: 50%;
-        img {
-          max-height: 170px;
-        }
+        background-color: inherit;
+        margin: 1rem;
       }
     }
     &.three {
       .block-content__heading--primary {
-        top: 1rem;
+        top: -1rem;
         width: 100%;
         text-align: center;
       }
-      .block-content {
-        flex-direction: column;
-        justify-content: flex-end;
-        align-items: center;
-      }
+
       .block-content__box {
+        aspect-ratio: 4/3;
         display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 90%;
-        width: 80%;
-        img {
-          max-height: 200px;
-        }
+        height: auto;
+        width: 100%;
+        padding: 1rem;
+        background-color: inherit;
       }
     }
 
     &.active {
       opacity: 1;
-      transform: translateX(0%);
+      animation: slide 2.5s linear;
     }
     &.one {
       background-color: a.$color-blue-primary;
@@ -127,7 +104,20 @@
 
 .block-content__heading--primary {
   position: absolute;
-  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-size: clamp(2.5rem, 5vw, 5rem);
   z-index: 2;
   color: a.$color-white;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(100%);
+  }
+  25%,
+  75% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }
