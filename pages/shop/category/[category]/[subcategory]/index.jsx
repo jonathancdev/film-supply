@@ -30,8 +30,12 @@ export default function Category({
     }
   };
   const filteredByCategory = filterByCategory();
+
+  const [sortOption, setSortOption] = useState("brandasc");
   //itemList will either be filteredByCategory or a new array filtering filteredByCategory
-  const [itemList, setItemList] = useState([]);
+  const [itemList, setItemList] = useState(
+    sortItems(filteredByCategory, sortOption)
+  );
   //resets item list if router props change
   useEffect(() => {
     setItemList(filteredByCategory);
@@ -41,9 +45,6 @@ export default function Category({
   //array that holds category and subcategory for filter option
   const [filterOption, setFilterOption] = useState([]);
 
-  //SORT ITEMS BY OPTION
-  const [sortOption, setSortOption] = useState("brandasc");
-
   const updateSortOption = (option) => {
     setSortOption(option);
   };
@@ -52,13 +53,15 @@ export default function Category({
   };
 
   useEffect(() => {
-    //if filter option is selected or changes, reset itemlist accordingly
     let filtered = [];
     if (filterOption.length === 2) {
+      //if filter option is selected or changes, filter array
       filtered = filterItems(filteredByCategory, filterOption);
     } else {
+      //or leave array alone
       filtered = filteredByCategory;
     }
+    //sort array, default is a to z in state
     setItemList(sortItems(filtered, sortOption));
   }, [filterOption, sortOption]);
 
