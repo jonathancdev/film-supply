@@ -1,7 +1,14 @@
 @keyframes counterShake {
-
-    0%, 100% {transform: translateX(0);} 
-    10%, 50% {transform: translateX(-2px);} 
-    30%, 70%  {transform: translateX(2px);} 
- 
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  10%,
+  50% {
+    transform: translateX(-2px);
+  }
+  30%,
+  70% {
+    transform: translateX(2px);
+  }
 }

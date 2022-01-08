@@ -4,10 +4,37 @@ import "../styles/sass/main.scss";
 import Head from "next/head";
 import Layout from "../components/Layout";
 import useCart from "../hooks/useCart";
+import { useRouter } from "next/router";
 
 function MyApp({ Component, pageProps, items, categories }) {
   const { cart, subtotal, quantity, addToCart, decrementItem } = useCart();
   const [shoppingCart, setShoppingCart] = useState([]);
+  const parse = (param) => {
+    let parsed;
+    switch (param) {
+      case "brands":
+        parsed = "brand";
+        break;
+      case "color":
+        parsed = "type";
+        break;
+      case "black-and-white":
+        parsed = "black and white";
+        break;
+      case "color-negative":
+        parsed = "color negative";
+        break;
+      case "color-all":
+        parsed = ["color negative", "slide"];
+        break;
+      default:
+        parsed = param;
+    }
+    return parsed;
+  };
+  const router = useRouter();
+  const category = parse(router.query.category);
+  const subcategory = parse(router.query.subcategory);
 
   return (
     <>
@@ -19,6 +46,8 @@ function MyApp({ Component, pageProps, items, categories }) {
       <Layout categories={categories} quantity={quantity}>
         <Component
           {...pageProps}
+          category={category}
+          subcategory={subcategory}
           items={items}
           categories={categories}
           addToCart={addToCart}

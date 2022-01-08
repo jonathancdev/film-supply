@@ -2,10 +2,13 @@
 
 .options {
   background-color: a.$color-yellow-lighter;
-  padding: 0.5rem 0;
+  padding: 1rem 0;
   height: 10rem;
-  width: 90%;
+  width: calc(100% - 3rem);
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .filter {

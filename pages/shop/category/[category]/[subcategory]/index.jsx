@@ -1,37 +1,20 @@
-import React from "react";
-import { useRouter } from "next/router";
+import React, { useState, useEffect } from "react";
+import Options from "../../../../../components/Options";
+import OptionsTest from "../../../../../components/OptionsTest";
 import ItemPreview from "../../../../../components/ItemPreview";
+import filterItems from "../../../../../utils/filterItems";
+import sortItems from "../../../../../utils/sortItems";
 
-export default function Category({ items, categories, addToCart }) {
-  const router = useRouter();
-  const parse = (param) => {
-    let parsed;
-    switch (param) {
-      case "brands":
-        parsed = "brand";
-        break;
-      case "color":
-        parsed = "type";
-        break;
-      case "black-and-white":
-        parsed = "black and white";
-        break;
-      case "color-negative":
-        parsed = "color negative";
-        break;
-      case "color-all":
-        parsed = ["color negative", "slide"];
-        break;
-      default:
-        parsed = param;
-    }
-    return parsed;
-  };
-
-  const category = parse(router.query.category);
-  const subcategory = parse(router.query.subcategory);
-
-  const filterItems = () => {
+export default function Category({
+  category,
+  subcategory,
+  items,
+  categories,
+  addToCart,
+}) {
+  //FILTER BY CATEGORY FOR PAGE
+  //filters all items to subcategory based on router props
+  const filterByCategory = () => {
     if (typeof category !== "object") {
       const filtered = items.filter(
         (item) => item[category].toLowerCase() === subcategory
@@ -46,19 +29,56 @@ export default function Category({ items, categories, addToCart }) {
       return filtered;
     }
   };
+  const filteredByCategory = filterByCategory();
+  //itemList will either be filteredByCategory or a new array filtering filteredByCategory
+  const [itemList, setItemList] = useState([]);
+  //resets item list if router props change
+  useEffect(() => {
+    setItemList(filteredByCategory);
+  }, [category, subcategory]);
 
-  const filteredItems = filterItems();
+  //FILTER ITEMS BY OPTION
+  //array that holds category and subcategory for filter option
+  const [filterOption, setFilterOption] = useState([]);
+
+  //SORT ITEMS BY OPTION
+  const [sortOption, setSortOption] = useState("brandasc");
+
+  const updateSortOption = (option) => {
+    setSortOption(option);
+  };
+  const updateFilterOption = (option) => {
+    setFilterOption(option);
+  };
+
+  useEffect(() => {
+    //if filter option is selected or changes, reset itemlist accordingly
+    let filtered = [];
+    if (filterOption.length === 2) {
+      filtered = filterItems(filteredByCategory, filterOption);
+    } else {
+      filtered = filteredByCategory;
+    }
+    setItemList(sortItems(filtered, sortOption));
+  }, [filterOption, sortOption]);
 
   return (
     <div className="page">
       <div className="category">
+        <Options
+          categories={categories}
+          updateSortOption={updateSortOption}
+          updateFilterOption={updateFilterOption}
+          category={category}
+          subcategory={subcategory}
+        ></Options>
         <div className="shop-path">
           shop / {category != "type" ? category : "color"} /{" "}
           {typeof subcategory === "string" ? subcategory : "color & slide"}
         </div>
-        {filteredItems.length > 0 ? (
+        {itemList.length > 0 ? (
           <div className="shop-grid">
-            {filteredItems.map((item) => (
+            {itemList.map((item) => (
               <ItemPreview
                 item={item}
                 // addToCart={addToCart}

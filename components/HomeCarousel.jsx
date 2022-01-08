@@ -3,7 +3,7 @@ import Link from "next/link";
 import CarouselBlock from "./CarouselBlock";
 export default function HomeCarousel() {
   const items = [1, 2, 3];
-  const [active, setActive] = useState(2);
+  const [active, setActive] = useState(1);
   const change = () => {
     if (active === 3) {
       setActive(1);
@@ -11,14 +11,14 @@ export default function HomeCarousel() {
       setActive(active + 1);
     }
   };
-  useEffect(() => {
-    let timer = setTimeout(() => {
-      change();
-    }, 2000);
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [active]);
+  // useEffect(() => {
+  //   let timer = setTimeout(() => {
+  //     change();
+  //   }, 2000);
+  //   return () => {
+  //     clearTimeout(timer);
+  //   };
+  // }, [active]);
 
   return (
     <div className="home-carousel">
