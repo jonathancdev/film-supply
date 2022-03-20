@@ -1,34 +1,21 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# FILM SUPPLY
 
-## Getting Started
+is a mock website built for fun to practice design, data retrieval and manipulation, and building shopping components.
+## Tech Stack
 
-First, run the development server:
+**Client:** Next.js, Sass
+## Features
+- Intelligent search filters products based on user input
+- Includes product filtering and sorting
+- Responsive
+## Screenshots
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+![App Screenshot](https://res.cloudinary.com/dklynundl/image/upload/v1641056169/portfolio/filmsupply4.png)
+## Roadmap
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Rebuild authorization using Firebase or Auth0
+- Save shopping cart temporarily in localstroage
+- Integrate Snipcart
+## Lessons Learned
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+I learned how to create and retrieve data my own hosted API endpoint by creating my own product catalog for this project. I also learned a lot about routing and dynamic page generation with Next.js. This is still very much a work in progress but it has been fun to work on.
